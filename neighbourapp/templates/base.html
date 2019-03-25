@@ -27,15 +27,15 @@
                 <a href="#" class="navbar-brand">Nyumba Kumi</a>
             </div>
             <ul class="nav navbar-item">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Estate</a></li>
-                <li><a href="#">Business</a></li>
+                <li><a href="{%url 'home'%}">Estate</a></li>
+                <li><a href="{%url 'business'%}">Business</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
             <ul class="nav navbar-item navbar-right">
-                <li><a href="#"><i class="fas fa-sign-in-alt mr-2"></i>Sign In</a></li>
-                <li><a href="#"><i class="fas fa-chalkboard-teacher mr-2"></i>Sign Up</a></li>
+                <li><a href="{%url 'login'%}"><i class="fas fa-sign-in-alt mr-2"></i>Sign In</a></li>
+                <li><a href="{%url 'logout'%}"><i class="fas fa-sign-in-alt mr-2"></i>Logout</a></li>
+                <li><a href="{%url 'register'%}"><i class="fas fa-chalkboard-teacher mr-2"></i>Sign Up</a></li>
             </ul>
         </div>
     </nav>
