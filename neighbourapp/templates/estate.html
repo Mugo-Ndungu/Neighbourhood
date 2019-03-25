@@ -1,0 +1,78 @@
+{% extends 'base.html'%}
+{% load bootstrap4 %} 
+{% load staticfiles %} 
+{{form.media}}
+{% block content %}
+{{ block.super }}
+<div class="container">
+    <div class="text-left">
+        <p> Police dept:{{estate.police_dept}}</p>
+        <p> Health dept:{{estate.health_dept}}</p>
+    </div>
+    <div class="text-center">
+
+        <div class="col-md-3 col-sm-3 col-xs-6"> <a href="/biz" class="btn btn-sm animated-button victoria-two">Add
+                Business</a> </div>
+        <h1> Businesses in {{estate.name}}</h1>
+        <em><strong>(You can change your estate via your profile)</strong></em>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+                {% for biz in businesses %}
+                <div class="col-md-4">
+                    <br>
+
+                    <div class="card border-secondary">
+                        <div class="card-body" style="background-color:#e9f0f5;">
+                            <h4 class="card-title"> {{biz.name }}</h4>
+                            <h5> {{biz.description }}</h5>
+                            <p>{{biz.email }}</p>
+
+                        </div>
+                        <small class="text-right">Created by:<a
+                                href="/profiles/{{biz.user.id}}">{{biz.user.username }}</a></small>
+                    </div>
+
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="text-center">
+                <h1>Posts</h1>
+                <strong>
+                    <p>N/B:You only post where you belong</p>
+                </strong>
+                {% for post in posts %}
+                <div class="card-header">
+                    <p class="text-left">
+                        <a href="/profiles/{{post.user.id}}/{{post.user.username}}"> <img
+                                src="{{post.user.profile.pro_photo.url}}" alt="Avatar" class="img-responsive"
+                                style="border-radius:70%;width: 50px; height:40px;"> {{post.user.username }} </a>
+                    </p>
+                    <div class="card-footer">
+
+                        {{post.post}}
+                    </div>
+                </div>
+
+                {% endfor %}
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
+                    aria-expanded="false" aria-controls="collapseExample">
+                    Add post
+                </button>
+                <div class="collapse" id="collapseExample">
+                    <form action="{%url 'post' %}" method="post">
+                        {%csrf_token%}
+                        {% bootstrap_form post_form %}
+                        <input type="submit" class="btn btn-success btn-lg" value="Post">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
