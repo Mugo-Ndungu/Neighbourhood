@@ -1,5 +1,46 @@
-{% extends 'base.html' %}
+{% extends 'base.html'%}
+{% load bootstrap4 %}
+{% load staticfiles %}
+{{form.media}}
 
 {% block content %}
-{{block.super}}
-{% endblock content %}
+{{ block.super }}
+<!-- <div class="top" style="padding:300px; background-image:url('http://farm4.static.flickr.com/3501/3870026314_a9b365a3e8_b.jpg'); background-size: cover;"> -->
+<div class="card" style="opacity: 0.5;background-color:#6969B3; padding: 10px; color: rgb(19, 17, 17)">
+
+    <h2 class="text-center">Estates </h2>
+
+</div>
+<div class="container">
+
+    <div class="btn btn-outline-success mt-5"> <a href="/create" >Add
+            Estate</a> </div>
+    <div class="row">
+        {% for hood in estate %}
+        <div class="col-md-4">
+            <br>
+            <div class="card border-secondary">
+                <div class="card-body" style="background-color:#6969B3;">
+                    <h4 class="card-title">Hood: {{hood.name }}</h4>
+                    <div class="text-center">
+
+                        <img src="{{hood.image.url}}" id="img" style="height:200px; width: 280px;">
+                    </div>
+                    <h6 class="card-title">Location: {{hood.location | upper}}</h6>
+                    <h5 class="card-title">Occupants: {{hood.occupants | upper}}</h5>
+
+                    <a href="#"><button type="button"
+                            class="btn btn-outline-primary btn-sm">Join</button> </a>
+                    <div class="text-right">
+                        <a href="/profiles/{{hood.user.id}}/{{hood.user.username}}"><em> #hoodby{{hood.user.username }}
+                            </em></a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
