@@ -35,7 +35,7 @@
             <ul class="nav navbar-item navbar-right">
                 {% if user.is_authenticated %}
                 <li><a href="{%url 'logout'%}"><i class="fas fa-sign-in-alt mr-2"></i>Logout</a></li>
-                <li><a href="{%url 'profile'%}"><i class="fas fa-sign-in-alt mr-2"></i>Profile</a></li>
+                <li><a href="{%url 'profile'%}"><i class="fas fa-sign-in-alt mr-2" ></i>Profile</a></li>
                 {% else %}
                 <li><a href="{%url 'login'%}"><i class="fas fa-sign-in-alt mr-2"></i>Sign In</a></li>
                 <li><a href="{%url 'register'%}"><i class="fas fa-chalkboard-teacher mr-2"></i>Sign Up</a></li>
